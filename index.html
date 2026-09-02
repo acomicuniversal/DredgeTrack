@@ -20,6 +20,9 @@
           <a href="#zones"><span>âŒ–</span> Dredge zones</a>
           <a href="#log"><span>â–¤</span> Daily logs</a>
           <a href="#maintenance"><span>â—‡</span> Maintenance</a>
+          <a href="#documents"><span>â‡§</span> Document centre</a>
+          <a href="#crew"><span>â™™</span> Crew &amp; shifts</a>
+          <a href="#approvals"><span>âœ“</span> Approvals <b class="nav-badge">3</b></a>
           <a href="#reports"><span>â–±</span> Reports</a>
         </nav>
         <div class="sidebar-bottom">
@@ -32,7 +35,7 @@
         <header>
           <div class="mobile-brand">â‰‹ HARBORLINE</div>
           <div class="crumb"><span>Operations</span> / Overview</div>
-          <div class="header-actions"><button class="icon-button" aria-label="Notifications">â™¢<i></i></button><button class="date-button">â–£ &nbsp; Sep 02, 2026 <span>âŒ„</span></button><button class="primary" id="newLog">+ New daily log</button></div>
+          <div class="header-actions"><button class="icon-button" aria-label="Notifications">â™¢<i></i></button><button class="date-button">â–£ &nbsp; Sep 02, 2026 <span>âŒ„</span></button><button class="upload-button" id="uploadTrigger">â‡§ Import files</button><button class="primary" id="newLog">+ New daily log</button></div>
         </header>
 
         <section class="intro" id="overview">
@@ -59,9 +62,22 @@
         </section>
 
         <section class="panel activity" id="log"><div class="panel-head"><div><h2>Todayâ€™s activity</h2><p>Latest entries from your team</p></div><button class="text-button">View all logs <span>â†’</span></button></div><div class="activity-row"><span class="time">10:42</span><span class="activity-icon">â‰‹</span><p><strong>Production record submitted</strong><small>TSHD Ocean Pioneer logged 1,280 mÂ³ for the 10:00â€“11:00 interval</small></p><span class="by">by J. Mensah</span></div><div class="activity-row"><span class="time">09:15</span><span class="activity-icon amber-icon">â—‡</span><p><strong>Maintenance issue reported</strong><small>Hydraulic pressure fluctuation recorded on CSD Delta 3</small></p><span class="by">by T. Adeyemi</span></div></section>
+
+        <section class="operations-grid" id="documents">
+          <article class="panel imports"><div class="panel-head"><div><h2>Document centre</h2><p>Import and review operational source files</p></div><button class="text-button" id="browseFiles">Browse files <span>â†’</span></button></div><div class="drop-zone" id="dropZone"><span class="upload-orb">â‡§</span><div><strong>Drop Excel, PDF or Word files here</strong><small>Production logs, vessel reports, crew lists and survey records</small></div><button class="outline-button" id="selectFiles">Select files</button><input id="fileInput" type="file" multiple accept=".xlsx,.xls,.csv,.pdf,.doc,.docx" hidden /></div><div class="import-list" id="importList"><div class="import-row"><span class="file-type xlsx">XLS</span><p><strong>Daily_production_02-09.xlsx</strong><small>Imported by A. Okafor Â· 10:42</small></p><span class="import-status verified">âœ“ Validated</span><button class="more">â€¢â€¢â€¢</button></div><div class="import-row"><span class="file-type pdf">PDF</span><p><strong>Hydrographic_survey_W36.pdf</strong><small>Imported by J. Mensah Â· 08:15</small></p><span class="import-status review">Review</span><button class="more">â€¢â€¢â€¢</button></div></div></article>
+          <article class="panel approvals" id="approvals"><div class="panel-head"><div><h2>Approval queue <span class="count">3</span></h2><p>Records awaiting your sign-off</p></div><button class="text-button">Open queue <span>â†’</span></button></div><div class="approval-list"><div><span class="approval-icon">â–¤</span><p><strong>Daily shift report Â· Zone B</strong><small>Submitted by T. Adeyemi Â· 20 min ago</small></p><button class="approve">Approve</button><button class="reject">Ã—</button></div><div><span class="approval-icon fuel-icon">â—’</span><p><strong>Fuel issue Â· 2,400 L diesel</strong><small>Requested for TSHD Atlas Â· 1 hr ago</small></p><button class="approve">Approve</button><button class="reject">Ã—</button></div><div><span class="approval-icon maintenance-icon">â—‡</span><p><strong>Maintenance work order #M-229</strong><small>Hydraulic line replacement Â· 2 hrs ago</small></p><button class="approve">Approve</button><button class="reject">Ã—</button></div></div></article>
+        </section>
+
+        <section class="bottom-grid extended" id="crew">
+          <article class="panel crew-panel"><div class="panel-head"><div><h2>Crew &amp; shift readiness</h2><p>Day shift Â· 06:00â€“18:00</p></div><button class="text-button">Crew roster <span>â†’</span></button></div><div class="crew-summary"><div><strong>46 <em>/ 48</em></strong><small>Personnel checked in</small></div><div><strong>12</strong><small>Active certifications this month</small></div><div><strong>2</strong><small>Relief staff on call</small></div></div><div class="crew-bars"><p><span>TSHD Ocean Pioneer</span><b><i style="width:100%"></i></b><strong>18 / 18</strong></p><p><span>CSD Delta 3</span><b><i style="width:89%"></i></b><strong>16 / 18</strong></p><p><span>Support vessels</span><b><i style="width:100%"></i></b><strong>12 / 12</strong></p></div></article>
+          <article class="panel fuel-panel"><div class="panel-head"><div><h2>Fuel &amp; consumables</h2><p>Inventory and todayâ€™s bunker movements</p></div><button class="text-button">Issue fuel <span>â†’</span></button></div><div class="fuel-kpi"><div><small>Diesel on hand</small><strong>84,200 <em>L</em></strong><span>68% of capacity</span></div><div class="tank"><i></i><b>120k L</b></div></div><div class="fuel-moves"><p><span>10:10</span> TSHD Ocean Pioneer <b>âˆ’ 4,200 L</b></p><p><span>07:35</span> Tug Marlin <b>âˆ’ 640 L</b></p></div></article>
+        </section>
+
+        <section class="panel report-panel" id="reports"><div class="panel-head"><div><h2>Reporting workspace</h2><p>Ready-to-export operational and compliance summaries</p></div><button class="primary small-primary" id="generateReport">Generate report</button></div><div class="report-cards"><button><span class="report-icon">â–¥</span><strong>Daily operations report</strong><small>Production, assets, weather and events</small><i>PDF Â· XLSX</i></button><button><span class="report-icon teal-report">âŒ–</span><strong>Weekly dredge progress</strong><small>Zone volumes, survey variance and targets</small><i>PDF Â· XLSX</i></button><button><span class="report-icon orange-report">â—‡</span><strong>Maintenance compliance</strong><small>Work orders, downtime and cost summary</small><i>PDF Â· XLSX</i></button><button><span class="report-icon blue-report">â™™</span><strong>Crew &amp; HSE register</strong><small>Attendance, certification and incidents</small><i>PDF Â· XLSX</i></button></div></section>
       </main>
     </div>
     <div class="modal-backdrop" id="modal"><form class="log-modal"><button type="button" class="close" id="closeModal">Ã—</button><p class="eyebrow">OPERATIONS LOG</p><h2>New daily log</h2><label>Vessel<select><option>TSHD Ocean Pioneer</option><option>CSD Delta 3</option><option>TSHD Atlas</option></select></label><label>Production volume (mÂ³)<input type="number" placeholder="e.g. 1280" /></label><label>Shift notes<textarea placeholder="Add an operational update..."></textarea></label><button class="primary" type="submit">Save daily log</button></form></div>
+    <div class="toast" id="toast">âœ“ Report request created</div>
     <script src="app.js"></script>
   </body>
 </html>
