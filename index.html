@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Harborline | Dredge Operations</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="shell">
+      <aside class="sidebar">
+        <div class="brand"><span class="brand-mark">â‰‹</span><span>HARBORLINE</span></div>
+        <div class="company-select">North Channel Project <span>âŒ„</span></div>
+        <nav>
+          <a class="active" href="#overview"><span>â–¦</span> Overview</a>
+          <a href="#fleet"><span>â—’</span> Fleet &amp; assets</a>
+          <a href="#zones"><span>âŒ–</span> Dredge zones</a>
+          <a href="#log"><span>â–¤</span> Daily logs</a>
+          <a href="#maintenance"><span>â—‡</span> Maintenance</a>
+          <a href="#reports"><span>â–±</span> Reports</a>
+        </nav>
+        <div class="sidebar-bottom">
+          <div class="weather"><span class="sun">â˜€</span><div><strong>27Â°C</strong><small>Light winds Â· 8 kn</small></div></div>
+          <div class="operator"><div class="avatar">AO</div><div><strong>Amina Okafor</strong><small>Operations manager</small></div><span>â€¢â€¢â€¢</span></div>
+        </div>
+      </aside>
+
+      <main>
+        <header>
+          <div class="mobile-brand">â‰‹ HARBORLINE</div>
+          <div class="crumb"><span>Operations</span> / Overview</div>
+          <div class="header-actions"><button class="icon-button" aria-label="Notifications">â™¢<i></i></button><button class="date-button">â–£ &nbsp; Sep 02, 2026 <span>âŒ„</span></button><button class="primary" id="newLog">+ New daily log</button></div>
+        </header>
+
+        <section class="intro" id="overview">
+          <div><p class="eyebrow">GOOD MORNING, AMINA</p><h1>Operations overview</h1><p class="subtle">Hereâ€™s whatâ€™s happening across North Channel today.</p></div>
+          <div class="shift-pill"><span class="pulse"></span> Day shift in progress <strong>06:00 â€” 18:00</strong></div>
+        </section>
+
+        <section class="kpis">
+          <article class="kpi"><div class="kpi-top"><span>Production today</span><span class="dot teal"></span></div><strong>14,280 <em>mÂ³</em></strong><p class="positive">â†— 8.4% <span>vs. yesterday</span></p><div class="sparkline teal-line"><svg viewBox="0 0 160 38" preserveAspectRatio="none"><path d="M0 30 C 15 30, 18 26, 30 27 S48 33, 57 24 S73 22, 82 25 S98 14, 111 20 S125 15, 134 14 S148 4,160 8"/></svg></div></article>
+          <article class="kpi"><div class="kpi-top"><span>Monthly target</span><span class="dot blue"></span></div><strong>72.6<em>%</em></strong><p class="muted">435,800 of 600,000 mÂ³</p><div class="progress"><b style="width:72.6%"></b></div></article>
+          <article class="kpi"><div class="kpi-top"><span>Operating assets</span><span class="dot amber"></span></div><strong>5 <em>/ 7</em></strong><p class="muted">2 assets unavailable</p><div class="asset-dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></div></article>
+          <article class="kpi"><div class="kpi-top"><span>Fuel consumption</span><span class="dot orange"></span></div><strong>8,940 <em>L</em></strong><p class="positive">â†“ 3.1% <span>vs. planned</span></p><div class="fuel-bar"><b></b></div></article>
+        </section>
+
+        <section class="grid-main">
+          <article class="panel map-panel" id="zones"><div class="panel-head"><div><h2>Active dredge zones</h2><p>Live position &amp; production status</p></div><button class="text-button">View map <span>â†’</span></button></div><div class="map"><div class="water-lines"></div><div class="land land-one"></div><div class="land land-two"></div><div class="channel-label">NORTH CHANNEL</div><div class="zone zone-a"><span>ZONE A</span><b>6,540 mÂ³</b><i class="boat">â—¢</i></div><div class="zone zone-b"><span>ZONE B</span><b>4,260 mÂ³</b><i class="boat">â—¢</i></div><div class="zone zone-c"><span>ZONE C</span><b>3,480 mÂ³</b><i class="boat">â—¢</i></div><div class="map-legend"><span><i class="legend-dot active-dot"></i> Working</span><span><i class="legend-dot standby-dot"></i> Standby</span></div></div></article>
+
+          <article class="panel production"><div class="panel-head"><div><h2>Production trend</h2><p>Volume dredged in the last 7 days</p></div><button class="select">Volume (mÂ³) âŒ„</button></div><div class="chart-wrap"><div class="y-labels"><span>20k</span><span>15k</span><span>10k</span><span>5k</span><span>0</span></div><svg class="chart" viewBox="0 0 500 220" preserveAspectRatio="none"><defs><linearGradient id="fill" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#0cb5ae" stop-opacity=".25"/><stop offset="1" stop-color="#0cb5ae" stop-opacity="0"/></linearGradient></defs><g class="gridlines"><line x1="0" y1="12" x2="500" y2="12"/><line x1="0" y1="60" x2="500" y2="60"/><line x1="0" y1="108" x2="500" y2="108"/><line x1="0" y1="156" x2="500" y2="156"/><line x1="0" y1="204" x2="500" y2="204"/></g><path class="area" d="M5,125 C30,135 45,115 75,120 S115,72 148,90 S200,100 225,90 S260,42 295,60 S340,85 365,70 S405,92 430,65 S470,45 495,28 L495,204 L5,204Z"/><path class="trend" d="M5,125 C30,135 45,115 75,120 S115,72 148,90 S200,100 225,90 S260,42 295,60 S340,85 365,70 S405,92 430,65 S470,45 495,28"/><circle cx="495" cy="28" r="5"/></svg><div class="x-labels"><span>Aug 27</span><span>Aug 28</span><span>Aug 29</span><span>Aug 30</span><span>Aug 31</span><span>Sep 01</span><span>Today</span></div></div><div class="chart-total"><span>Weekly total</span><strong>91,420 mÂ³</strong><b>+12.8%</b></div></article>
+        </section>
+
+        <section class="bottom-grid">
+          <article class="panel fleet" id="fleet"><div class="panel-head"><div><h2>Fleet status</h2><p>7 assets across the project</p></div><button class="text-button">Manage fleet <span>â†’</span></button></div><div class="fleet-list"><div class="vessel"><div class="vessel-icon teal-bg">âš“</div><div class="vessel-name"><strong>TSHD Ocean Pioneer</strong><small>Hopper dredger Â· Zone A</small></div><span class="status working">â— Working</span><div class="rate"><strong>1,280 mÂ³/h</strong><small>Current rate</small></div><span class="chev">â€º</span></div><div class="vessel"><div class="vessel-icon blue-bg">âš“</div><div class="vessel-name"><strong>CSD Delta 3</strong><small>Cutter suction Â· Zone B</small></div><span class="status working">â— Working</span><div class="rate"><strong>860 mÂ³/h</strong><small>Current rate</small></div><span class="chev">â€º</span></div><div class="vessel"><div class="vessel-icon amber-bg">âš“</div><div class="vessel-name"><strong>TSHD Atlas</strong><small>Hopper dredger Â· Zone C</small></div><span class="status standby">â— Standby</span><div class="rate"><strong>â€”</strong><small>Awaiting tide</small></div><span class="chev">â€º</span></div></div></article>
+          <article class="panel attention" id="maintenance"><div class="panel-head"><div><h2>Needs attention <span class="count">3</span></h2><p>Items requiring action today</p></div><button class="text-button">View all <span>â†’</span></button></div><div class="alerts"><div><span class="alert-icon critical">!</span><p><strong>Hydraulic pressure alert</strong><small>CSD Delta 3 Â· Reported 10 min ago</small></p><button>Review</button></div><div><span class="alert-icon warning">âŒ</span><p><strong>Scheduled maintenance due</strong><small>Tug Marlin Â· Due in 3 days</small></p><button>Schedule</button></div><div><span class="alert-icon info">i</span><p><strong>Low spare parts stock</strong><small>Cutter teeth Â· 12 units remaining</small></p><button>View stock</button></div></div></article>
+        </section>
+
+        <section class="panel activity" id="log"><div class="panel-head"><div><h2>Todayâ€™s activity</h2><p>Latest entries from your team</p></div><button class="text-button">View all logs <span>â†’</span></button></div><div class="activity-row"><span class="time">10:42</span><span class="activity-icon">â‰‹</span><p><strong>Production record submitted</strong><small>TSHD Ocean Pioneer logged 1,280 mÂ³ for the 10:00â€“11:00 interval</small></p><span class="by">by J. Mensah</span></div><div class="activity-row"><span class="time">09:15</span><span class="activity-icon amber-icon">â—‡</span><p><strong>Maintenance issue reported</strong><small>Hydraulic pressure fluctuation recorded on CSD Delta 3</small></p><span class="by">by T. Adeyemi</span></div></section>
+      </main>
+    </div>
+    <div class="modal-backdrop" id="modal"><form class="log-modal"><button type="button" class="close" id="closeModal">Ã—</button><p class="eyebrow">OPERATIONS LOG</p><h2>New daily log</h2><label>Vessel<select><option>TSHD Ocean Pioneer</option><option>CSD Delta 3</option><option>TSHD Atlas</option></select></label><label>Production volume (mÂ³)<input type="number" placeholder="e.g. 1280" /></label><label>Shift notes<textarea placeholder="Add an operational update..."></textarea></label><button class="primary" type="submit">Save daily log</button></form></div>
+    <script src="app.js"></script>
+  </body>
+</html>
+
