@@ -15,3 +15,37 @@ document.querySelectorAll('nav a').forEach(link => link.addEventListener('click'
   link.classList.add('active');
 }));
 
+const input = document.getElementById('fileInput');
+const dropZone = document.getElementById('dropZone');
+const importList = document.getElementById('importList');
+const toast = document.getElementById('toast');
+const showToast = message => { toast.textContent = `âœ“ ${message}`; toast.classList.add('show'); setTimeout(() => toast.classList.remove('show'), 2800); };
+const fileType = name => {
+  const ext = name.split('.').pop().toLowerCase();
+  return ext === 'pdf' ? 'PDF' : ['doc', 'docx'].includes(ext) ? 'DOC' : ext === 'csv' ? 'CSV' : 'XLS';
+};
+const addFiles = files => [...files].forEach(file => {
+  const type = fileType(file.name);
+  const row = document.createElement('div');
+  row.className = 'import-row';
+  row.innerHTML = `<span class="file-type ${type === 'PDF' ? 'pdf' : type === 'DOC' ? 'doc' : 'xlsx'}">${type}</span><p><strong>${file.name}</strong><small>Imported just now Â· ${(file.size / 1024).toFixed(0)} KB</small></p><span class="import-status review">Review</span><button class="more">â€¢â€¢â€¢</button>`;
+  importList.prepend(row);
+  showToast(`${file.name} added for review`);
+});
+document.getElementById('uploadTrigger').addEventListener('click', () => input.click());
+document.getElementById('selectFiles').addEventListener('click', () => input.click());
+document.getElementById('browseFiles').addEventListener('click', () => input.click());
+input.addEventListener('change', () => { addFiles(input.files); input.value = ''; });
+['dragenter', 'dragover'].forEach(event => dropZone.addEventListener(event, e => { e.preventDefault(); dropZone.classList.add('dragging'); }));
+['dragleave', 'drop'].forEach(event => dropZone.addEventListener(event, e => { e.preventDefault(); dropZone.classList.remove('dragging'); }));
+dropZone.addEventListener('drop', e => addFiles(e.dataTransfer.files));
+document.querySelectorAll('.approve').forEach(button => button.addEventListener('click', () => {
+  const item = button.parentElement;
+  item.style.opacity = '.45';
+  button.textContent = 'Approved';
+  button.disabled = true;
+  showToast('Record approved and added to the audit trail');
+}));
+document.getElementById('generateReport').addEventListener('click', () => showToast('Daily operations report is being prepared'));
+document.querySelectorAll('.report-cards button').forEach(button => button.addEventListener('click', () => showToast(`${button.querySelector('strong').textContent} selected`)));
+
