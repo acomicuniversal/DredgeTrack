@@ -38,9 +38,7 @@ const addFiles = files => [...files].forEach(file => {
   row.className = 'import-row';
   row.innerHTML = `<span class="file-type ${type === 'PDF' ? 'pdf' : type === 'DOC' ? 'doc' : 'xlsx'}">${type}</span><p><strong>${file.name}</strong><small>Imported just now Â· ${(file.size / 1024).toFixed(0)} KB</small></p><span class="import-status review">Review</span><button class="more">â€¢â€¢â€¢</button>`;
   importList.prepend(row);
-  window.DredgeStore.create('documents', {
-    id: crypto.randomUUID(), name: file.name, file_type: type, size_bytes: file.size, status: 'review'
-  }).catch(error => console.error('Could not register document', error));
+  window.DredgeStore.storeDocument(file).catch(error => { console.error('Could not upload document', error); showToast(error.message || 'Document upload failed'); });
   showToast(`${file.name} added for review`);
 });
 document.getElementById('uploadTrigger').addEventListener('click', () => input.click());
