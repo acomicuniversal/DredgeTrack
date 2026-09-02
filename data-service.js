@@ -22,6 +22,15 @@ window.DredgeStore = (() => {
     if (client) return client.from('approvals').update({ status: 'approved', approved_at: new Date().toISOString() }).eq('id', id);
     const row = local.approvals.find(item => item.id === id); if (row) row.status = 'approved'; save();
   }
-  return { mode: client ? 'connected' : 'demo', create, approve };
+  async function storeDocument(file) {
+    if (!client) return create('documents', { id: crypto.randomUUID(), name: file.name, file_type: file.name.split('.').pop(), size_bytes: file.size, status: 'review' });
+    const { data: session } = await client.auth.getUser();
+    if (!session.user) throw new Error('Sign in is required before uploading documents.');
+    const storagePath = `${config.projectId}/${session.user.id}/${Date.now()}-${file.name.replace(/[^a-zA-Z0-9._-]/g, '_')}`;
+    const { error: uploadError } = await client.storage.from('operational-documents').upload(storagePath, file, { upsert: false });
+    if (uploadError) throw uploadError;
+    return create('documents', { id: crypto.randomUUID(), name: file.name, file_type: file.name.split('.').pop(), size_bytes: file.size, storage_path: storagePath, status: 'review', imported_by: session.user.id });
+  }
+  return { mode: client ? 'connected' : 'demo', create, approve, storeDocument };
 })();
 
