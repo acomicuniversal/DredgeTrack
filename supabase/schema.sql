@@ -61,4 +61,6 @@ create policy "authenticated project access" on documents for all to authenticat
 create policy "authenticated project access" on approvals for all to authenticated using (true) with check (true);
 
 insert into storage.buckets (id, name, public) values ('operational-documents', 'operational-documents', false) on conflict do nothing;
+create policy "authenticated document upload" on storage.objects for insert to authenticated with check (bucket_id = 'operational-documents');
+create policy "authenticated document read" on storage.objects for select to authenticated using (bucket_id = 'operational-documents');
 
